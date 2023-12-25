@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Create a new security group -->
+        <record id="group_customer_invoice_only" model="res.groups">
+            <field name="name">Customer Invoice Only</field>
+            <field name="category_id" ref="base.module_category_accounting_accounting"/>
+        </record>
+
+        <!-- Access rights for this group -->
+        <!-- Note: You may need to adjust these depending on your model's structure -->
+<!--        <record id="access_account_invoice_user" model="ir.model.access">-->
+<!--            <field name="name">account.invoice.user</field>-->
+<!--            <field name="model_id" ref="account.model_account_move"/>-->
+<!--            <field name="group_id" ref="rgb_account_update.group_customer_invoice_only"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="True"/>-->
+<!--        </record>-->
+
+        <!-- Record rule to see only customer invoices -->
+        <record id="account_invoice_see_own" model="ir.rule">
+            <field name="name">Customer Invoice See Own</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="groups" eval="[(4, ref('rgb_account_update.group_customer_invoice_only'))]"/>
+            <field name="domain_force">[('move_type','in',['out_invoice','out_refund','out_receipt']),('create_uid', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
