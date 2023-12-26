@@ -29,7 +29,7 @@
 
             <!--Total amount with all taxes-->
             <tr class="border-black o_total">
-                <td><strong>المبلغ</strong></td>
+                <td><strong>Total</strong></td>
                 <td class="text-end">
                     <span t-out="tax_totals['formatted_amount_total']">31.05</span>
                 </td>
@@ -47,7 +47,7 @@
                 <div class="mt-5 clearfix" style="direction: rtl !important; text-align:right">
                     <div class="page mb-4">
                         <h4 style="border-bottom:black solid 1px">
-                            ايصال استلام نقدية :
+                            Invoice :
 
                             <span style="color: red" t-if="o.name != '/'" t-field="o.name">INV/2023/0001</span>
                         </h4>
@@ -57,13 +57,13 @@
                         <div id="informations" class="row mt-3 mb-1">
                             <div t-attf-class="#{'col-auto col-3 mw-100' if report_type != 'html' else 'col'} mb-2"
                                  t-if="o.invoice_date" name="invoice_date">
-                                <t><strong>الاسم:</strong></t><br/>
+                                <t><strong>Name:</strong></t><br/>
                                 <span t-field="o.partner_id">2023-09-12</span>
                             </div>
 
                             <div t-attf-class="#{'col-auto col-3 mw-100' if report_type != 'html' else 'col'} mb-2"
                                  t-if="o.invoice_date" name="invoice_date">
-                                <t><strong>التاريخ</strong></t><br/>
+                                <t><strong>Date</strong></t><br/>
                                 <span t-field="o.invoice_date">2023-09-12</span>
                             </div>
 
@@ -133,7 +133,7 @@
 
                         </div>
                         <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)"/>
-                        وذلك قيمة :
+
                         <div class="oe_structure"></div>
                         <table class="table table-sm o_main_table table-borderless" name="invoice_line_table">
 
@@ -239,9 +239,8 @@
                                 </div>
                             </div>
                             <div style="float:left">
-                                <span>المستلم</span>
-                                <br/>
-                                <span>...............</span>
+                                <span>Received By  <span style="color:red; font-size:large" t-field="o.invoice_user_id"/></span>
+
                             </div>
                         </div>
                     </div>

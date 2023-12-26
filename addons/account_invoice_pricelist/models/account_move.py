@@ -15,7 +15,8 @@ class AccountMove(models.Model):
         compute="_compute_pricelist_id",
         tracking=True,
         store=True,
-        readonly=True,
+        required=True,
+        readonly=False,
         precompute=True,
     )
 
