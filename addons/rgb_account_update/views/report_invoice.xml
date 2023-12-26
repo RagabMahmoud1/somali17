@@ -239,7 +239,9 @@
                                 </div>
                             </div>
                             <div style="float:left">
-                                <span>Received By  <span style="color:red; font-size:large" t-field="o.invoice_user_id"/></span>
+                                <span>Received By  </span>
+                                <br/>
+                                <span style="color:red; font-size:large" t-field="o.invoice_user_id"/>
 
                             </div>
                         </div>
