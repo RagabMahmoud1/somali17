@@ -37,14 +37,14 @@
         </template>
 
 
-        <template id="rgb_document_tax_totals" inherit_id="rgb_account_update.rgb_document_tax_totals_template" primary="True"></template>
+        <template id="rgb_document_tax_totals" inherit_id="rgb_usd_print.rgb_document_tax_totals_template" primary="True"></template>
         <template id="rgb_report_invoice_document">
             <t t-call="web.external_layout">
                 <t t-set="o" t-value="o.with_context(lang=lang)"/>
                 <t t-set="forced_vat"
                    t-value="o.fiscal_position_id.foreign_vat"/> <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
 
-                <div class="mt-5 clearfix" style="direction: rtl !important; text-align:right; font-size: larger; font-weight: bold">
+                <div class="mt-5 clearfix" style="direction: ltr !important; text-align:left; font-size: larger; font-weight: bold">
                     <div class="page mb-4">
                         <h4 style="border-bottom:black solid 1px">
                             Invoice :
@@ -86,7 +86,7 @@
 
                                             <!--Tax totals-->
                                             <t t-set="tax_totals" t-value="o.tax_totals"/>
-                                            <t t-call="rgb_account_update.rgb_document_tax_totals"/>
+                                            <t t-call="rgb_usd_print.rgb_document_tax_totals"/>
 
                                             <!--Payments-->
                                             <t t-if="print_with_payments">
@@ -254,14 +254,14 @@
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lang" t-value="o.partner_id.lang"/>
-                    <t t-call="rgb_account_update.rgb_report_invoice_document"
+                    <t t-call="rgb_usd_print.rgb_report_invoice_document"
                        t-lang="lang"/>
                 </t>
             </t>
         </template>
 
         <template id="report_invoice_with_payments">
-            <t t-call="rgb_account_update.report_invoice">
+            <t t-call="rgb_usd_print.report_invoice">
                 <t t-set="print_with_payments" t-value="True"/>
             </t>
         </template>
