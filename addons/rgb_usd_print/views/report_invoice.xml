@@ -240,7 +240,7 @@
                                     <span t-field="o.narration"/>
                                 </div>
                             </div>
-                            <div style="float:left">
+                            <div style="float:right">
                                 <span>Received By  </span>
                                 <br/>
                                 <span style="color:blue; font-size:large" t-field="o.invoice_user_id"/>
